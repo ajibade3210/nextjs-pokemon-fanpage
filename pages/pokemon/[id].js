@@ -28,7 +28,8 @@ export async function getStaticProps({params}) {
   return {
     props: {
       pokemon: await res.json()
-    }
+    },
+    revalidate: 30
   }
 }
 
@@ -39,6 +40,7 @@ const Details = ({pokemon}) => {
         <title>{pokemon.name}</title>
       </Head>
       <div>
+      <h1>View Pokemon Attribute</h1>
         <Link href="/">
           <a>Back to home</a>
         </Link>
