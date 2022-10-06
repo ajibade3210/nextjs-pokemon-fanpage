@@ -4,11 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
-export async function getServerSideProps() {
-  const resp = await fetch(
-    "https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json"
-  );
-
+export async function getStaticProps() {
+  const resp = await fetch("https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json");
+console.log(resp)
   return {
     props: {
       pokemon: await resp.json()

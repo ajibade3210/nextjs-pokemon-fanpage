@@ -7,3 +7,8 @@ In some application we might want to stall rendering until when we get to the cl
 - checkout page
 
 SSR
+- search
+- query
+
+SSG
+- 

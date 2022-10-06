@@ -5,7 +5,22 @@ import styles from "../../styles/Details.module.css";
 import { useRouter } from 'next/router'
 import React from 'react'
 
-export async function getServerSideProps({params}) {
+export async function getStaticPaths() {
+  //returns an obj that has a list of all the different path we are to generate
+  const resp = await fetch(
+    "https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json"
+  );
+    const pokemon = await resp.json()
+console.log(pokemon)
+    return {
+      paths: pokemon.map(pokemon => ({
+        params: {id: pokemon.id.toString()}
+      })),
+      fallback: false
+    }
+}
+
+export async function getStaticProps({params}) {
   const res = await fetch(
     `https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${params.id}.json`
   );
