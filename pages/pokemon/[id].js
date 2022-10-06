@@ -40,11 +40,11 @@ const Details = ({pokemon}) => {
         <title>{pokemon.name}</title>
       </Head>
       <div>
-      <h1>View Pokemon Attribute</h1>
         <Link href="/">
-          <a>Back to home</a>
+          <a>Back To Home</a>
         </Link>
       </div>
+      <h1>View Pokemon Attribute</h1>
       <div className={styles.layout}>
         <div>
           <Image
