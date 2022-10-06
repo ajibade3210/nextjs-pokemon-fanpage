@@ -3,32 +3,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from "../../styles/Details.module.css";
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-const Details = () => {
-    const {
-        query: {id}
-    } = useRouter();
+export async function getServerSideProps({params}) {
+  const res = await fetch(
+    `https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${params.id}.json`
+  );
 
-    const [pokemon, setPokemon] = useState(null)
-
-    useEffect(()=> {
-        async function getPokemon(){
-            const res = await fetch(
-              `https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${id}.json`
-            );
-            console.log(res);
-            setPokemon(await res.json());
-        }
-        if(id){
-            getPokemon();
-        }
-    },[id])
-
-    if(!pokemon){
-        return null;
+  return {
+    props: {
+      pokemon: await res.json()
     }
-console.log(pokemon);
+  }
+}
+
+const Details = ({pokemon}) => {
   return (
     <div>
       <Head>

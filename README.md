@@ -4,4 +4,6 @@ CSR Usecase
 In next js
 In some application we might want to stall rendering until when we get to the client,
 - Ecommercer app cart
-- checkout page 
+- checkout page
+
+SSR
