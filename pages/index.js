@@ -22,7 +22,9 @@ export default function Home({pokemon}) {
         <title>Pokemon List</title>
       </Head>
       <div className={styles.grid}>
+      <div className="">
       <h1>Pokemon Fan Page</h1>
+      </div>
         {pokemon.map(pokemon => (
           <div className={styles.card} key={pokemon.id}>
             <Link href={`/pokemon/${pokemon.id}`}>
